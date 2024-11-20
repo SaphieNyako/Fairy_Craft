@@ -23,6 +23,7 @@ public class ModItems {
     public static final RegistryObject<Item> FAIRY_INK_BOTTLE = ITEMS.register("fairy_ink_bottle", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FAIRY_CRAFT_MUSIC_DISC = ITEMS.register("fairy_craft_music_disc", () -> new Item(new Item.Properties()));
     //TODO add fairy altar recipe
+    //TODO add custom item and Sound Events for mod
     public static final RegistryObject<Item> EMPTY_SUMMONING_SCROLL = ITEMS.register("empty_summoning_scroll", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SUMMONING_SCROLL_SPRING_PIXIE = ITEMS.register("summoning_scroll_spring_pixie", () -> new Item(new Item.Properties()));
     //TODO add fairy altar recipe
@@ -32,7 +33,7 @@ public class ModItems {
     //TODO add fairy altar recipe
     public static final RegistryObject<Item> SUMMONING_SCROLL_WINTER_PIXIE = ITEMS.register("summoning_scroll_winter_pixie", () -> new Item(new Item.Properties()));
     //TODO add fairy altar recipe
-    public static final RegistryObject<Item> PIXIE_DUST = ITEMS.register("pixie_dust", () -> new Item(new Item.Properties().food(
+    public static final RegistryObject<Item> PIXIE_DUST = ITEMS.register("pixie_dust", () -> new PixieDustItem(new Item.Properties().food(
             new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.LEVITATION, 30, 1), 1).build())));
     //TODO Configurations
 
