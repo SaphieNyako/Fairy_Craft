@@ -1,6 +1,8 @@
-package com.saphienyako.fairycraft;
+package com.saphienyako.fairy_craft;
 
 import com.mojang.logging.LogUtils;
+import com.saphienyako.fairy_craft.item.ModItems;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -8,7 +10,6 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -20,11 +21,11 @@ public class FairyCraft
 {
     public static final String MOD_ID = "fairy_craft";
     private static final Logger LOGGER = LogUtils.getLogger();
-    // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
-
 
     public FairyCraft() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModItems.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -36,9 +37,23 @@ public class FairyCraft
 
     }
 
-    // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.FAIRY_CRAFT_LEXICON);
+            event.accept(ModItems.LESSER_FAIRY_GEM);
+            event.accept(ModItems.GREATER_FAIRY_GEM);
+            event.accept(ModItems.SHINY_FAIRY_GEM);
+            event.accept(ModItems.BRILLIANT_FAIRY_GEM);
+            event.accept(ModItems.FAIRY_INK_BOTTLE);
+            event.accept(ModItems.FAIRY_CRAFT_MUSIC_DISC);
+            event.accept(ModItems.EMPTY_SUMMONING_SCROLL);
+            event.accept(ModItems.SUMMONING_SCROLL_SPRING_PIXIE);
+            event.accept(ModItems.SUMMONING_SCROLL_SUMMER_PIXIE);
+            event.accept(ModItems.SUMMONING_SCROLL_AUTUMN_PIXIE);
+            event.accept(ModItems.SUMMONING_SCROLL_WINTER_PIXIE);
+            event.accept(ModItems.PIXIE_DUST);
+            event.accept(ModItems.MANDRAKE);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

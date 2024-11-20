@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "fairy_craft:item/fairy_craft_music_disc"
+  }
+}
