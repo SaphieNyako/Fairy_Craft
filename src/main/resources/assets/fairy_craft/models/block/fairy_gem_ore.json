@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "fairy_craft:block/fairy_gem_ore"
+  }
+}

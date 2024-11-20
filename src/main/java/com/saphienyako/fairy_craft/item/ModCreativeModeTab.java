@@ -1,6 +1,7 @@
 package com.saphienyako.fairy_craft.item;
 
 import com.saphienyako.fairy_craft.FairyCraft;
+import com.saphienyako.fairy_craft.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -13,7 +14,7 @@ public class ModCreativeModeTab {
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, FairyCraft.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> FAIRY_CRAFT_TAB = CREATIVE_MODE_TAB.register("tutorial_tab",
+    public static final RegistryObject<CreativeModeTab> FAIRY_CRAFT_TAB = CREATIVE_MODE_TAB.register("fairy_craft_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SUMMONING_SCROLL_SPRING_PIXIE.get()))
                     .title(Component.translatable("creative_tab.fairy_craft_creative_tab"))
                     .displayItems((pParameters, pOutput) -> {
@@ -31,6 +32,8 @@ public class ModCreativeModeTab {
                         pOutput.accept(ModItems.SUMMONING_SCROLL_WINTER_PIXIE.get());
                         pOutput.accept(ModItems.PIXIE_DUST.get());
                         pOutput.accept(ModItems.MANDRAKE.get());
+                        pOutput.accept(ModBlocks.FAIRY_GEM_ORE.get());
+                        pOutput.accept(ModBlocks.FAIRY_GEM_ORE_DEEP_SLATE.get());
                     })
                     .build());
 
