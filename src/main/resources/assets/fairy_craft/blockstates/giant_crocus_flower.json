@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "opening_state=0,part=3": {
+      "model": "fairy_craft:block/giant_crocus_flower_bud"
+    },
+    "opening_state=1,part=3": {
+      "model": "fairy_craft:block/giant_crocus_flower1"
+    },
+    "opening_state=2,part=3": {
+      "model": "fairy_craft:block/giant_crocus_flower2"
+    },
+    "part=0": {
+      "model": "fairy_craft:block/giant_crocus_flower_stem"
+    },
+    "part=1": [
+      {
+        "model": "fairy_craft:block/giant_crocus_flower_stem"
+      },
+      {
+        "model": "fairy_craft:block/giant_crocus_flower_stem",
+        "y": 90
+      },
+      {
+        "model": "fairy_craft:block/giant_crocus_flower_stem",
+        "y": 180
+      },
+      {
+        "model": "fairy_craft:block/giant_crocus_flower_stem",
+        "y": 270
+      }
+    ],
+    "part=2": {
+      "model": "fairy_craft:block/giant_crocus_flower_stem"
+    }
+  }
+}

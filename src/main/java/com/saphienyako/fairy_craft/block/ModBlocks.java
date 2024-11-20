@@ -26,11 +26,17 @@ public class ModBlocks {
     public static final RegistryObject<Block> FAIRY_GEM_ORE_DEEP_SLATE = registerBlockAndItem("fairy_gem_ore_deep_slate",
             ()-> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3f, 10f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
 
-    /* BLOCKS TO BE ADDED IN THIS VERSION
 
-    public static final GiantFlowerBlock sunflower = new SunflowerBlock(FeywildMod.getInstance());
-    public static final GiantFlowerBlock dandelion = new DandelionBlock(FeywildMod.getInstance());
-    public static final GiantFlowerBlock crocus = new CrocusBlock(FeywildMod.getInstance());
+    public static final RegistryObject<Block> GIANT_SUN_FLOWER = registerBlock("giant_sun_flower",
+            ()-> new SunFlowerBlock(4));
+
+    public static final RegistryObject<Block> GIANT_CROCUS_FLOWER = registerBlock("giant_crocus_flower",
+            ()-> new CrocusFlowerBlock(3));
+
+    public static final RegistryObject<Block> GIANT_DANDELION_FLOWER = registerBlock("giant_dandelion_flower",
+            ()-> new DandelionFlowerBlock(4));
+
+    /* BLOCKS TO BE ADDED IN THIS VERSION
 
     public static final FeyAltarBlock summerFeyAltar = new FeyAltarBlock(FeywildMod.getInstance(), Alignment.SUMMER);
     public static final FeyAltarBlock winterFeyAltar = new FeyAltarBlock(FeywildMod.getInstance(), Alignment.WINTER);

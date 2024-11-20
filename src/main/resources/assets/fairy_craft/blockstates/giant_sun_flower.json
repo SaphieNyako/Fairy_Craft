@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "part=0": {
+      "model": "fairy_craft:block/giant_sun_flower_stem"
+    },
+    "part=1": [
+      {
+        "model": "fairy_craft:block/giant_sun_flower_stem"
+      },
+      {
+        "model": "fairy_craft:block/giant_sun_flower_stem",
+        "y": 90
+      },
+      {
+        "model": "fairy_craft:block/giant_sun_flower_stem",
+        "y": 180
+      },
+      {
+        "model": "fairy_craft:block/giant_sun_flower_stem",
+        "y": 270
+      }
+    ],
+    "part=2": {
+      "model": "fairy_craft:block/giant_sun_flower_stem"
+    },
+    "part=3,time_variant=0": {
+      "model": "fairy_craft:block/giant_sun_flower0"
+    },
+    "part=3,time_variant=1": {
+      "model": "fairy_craft:block/giant_sun_flower1"
+    },
+    "part=3,time_variant=2": {
+      "model": "fairy_craft:block/giant_sun_flower2"
+    }
+  }
+}

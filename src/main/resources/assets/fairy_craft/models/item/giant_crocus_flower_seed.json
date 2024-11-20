@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "fairy_craft:item/giant_crocus_flower_seed"
+  }
+}

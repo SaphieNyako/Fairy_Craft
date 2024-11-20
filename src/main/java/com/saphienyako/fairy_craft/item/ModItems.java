@@ -1,6 +1,9 @@
 package com.saphienyako.fairy_craft.item;
 
 import com.saphienyako.fairy_craft.FairyCraft;
+import com.saphienyako.fairy_craft.block.GiantFlowerBlock;
+import com.saphienyako.fairy_craft.block.ModBlocks;
+import com.saphienyako.fairy_craft.block.SunFlowerBlock;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -44,6 +47,11 @@ public class ModItems {
                     .effect(() -> new MobEffectInstance(MobEffects.BLINDNESS, 200, 0), 1)
                     .build())));
     //TODO Configurations
+
+    public static final RegistryObject<Item> GIANT_SUN_FLOWER_SEED = ITEMS.register("giant_sun_flower_seed", () -> new GiantFlowerSeedItem((GiantFlowerBlock) ModBlocks.GIANT_SUN_FLOWER.get()));
+    public static final RegistryObject<Item> GIANT_CROCUS_FLOWER_SEED = ITEMS.register("giant_crocus_flower_seed", () -> new GiantFlowerSeedItem((GiantFlowerBlock) ModBlocks.GIANT_CROCUS_FLOWER.get()));
+
+    public static final RegistryObject<Item> GIANT_DANDELION_FLOWER_SEED = ITEMS.register("giant_dandelion_flower_seed", () -> new GiantFlowerSeedItem((GiantFlowerBlock) ModBlocks.GIANT_DANDELION_FLOWER.get()));
 
     /* TODO SPAWN EGGS
 

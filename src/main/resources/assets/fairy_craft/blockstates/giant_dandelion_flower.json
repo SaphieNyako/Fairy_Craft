@@ -1,0 +1,39 @@
+{
+  "variants": {
+    "part=0": {
+      "model": "fairy_craft:block/giant_dandelion_flower_stem"
+    },
+    "part=1": [
+      {
+        "model": "fairy_craft:block/giant_dandelion_flower_stem"
+      },
+      {
+        "model": "fairy_craft:block/giant_dandelion_flower_stem",
+        "y": 90
+      },
+      {
+        "model": "fairy_craft:block/giant_dandelion_flower_stem",
+        "y": 180
+      },
+      {
+        "model": "fairy_craft:block/giant_dandelion_flower_stem",
+        "y": 270
+      }
+    ],
+    "part=2": {
+      "model": "fairy_craft:block/giant_dandelion_flower_stem"
+    },
+    "part=3,variant=0": {
+      "model": "fairy_craft:block/giant_dandelion_flower_bud"
+    },
+    "part=3,variant=1": {
+      "model": "fairy_craft:block/giant_dandelion_flower"
+    },
+    "part=3,variant=2": {
+      "model": "fairy_craft:block/giant_dandelion_flower_fluff"
+    },
+    "part=3,variant=3": {
+      "model": "fairy_craft:block/giant_dandelion_flower_nofluff"
+    }
+  }
+}

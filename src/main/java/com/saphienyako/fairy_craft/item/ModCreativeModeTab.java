@@ -32,6 +32,9 @@ public class ModCreativeModeTab {
                         pOutput.accept(ModItems.SUMMONING_SCROLL_WINTER_PIXIE.get());
                         pOutput.accept(ModItems.PIXIE_DUST.get());
                         pOutput.accept(ModItems.MANDRAKE.get());
+                        pOutput.accept(ModItems.GIANT_SUN_FLOWER_SEED.get());
+                        pOutput.accept(ModItems.GIANT_CROCUS_FLOWER_SEED.get());
+                        pOutput.accept(ModItems.GIANT_DANDELION_FLOWER_SEED.get());
                         pOutput.accept(ModBlocks.FAIRY_GEM_ORE.get());
                         pOutput.accept(ModBlocks.FAIRY_GEM_ORE_DEEP_SLATE.get());
                     })
