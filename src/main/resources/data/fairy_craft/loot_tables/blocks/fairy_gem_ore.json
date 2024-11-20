@@ -1,0 +1,79 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "enchantments": [
+                      {
+                        "enchantment": "minecraft:silk_touch",
+                        "levels": {
+                          "min": 1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "name": "fairy_craft:fairy_gem_ore"
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.6,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "fairy_craft:lesser_fairy_gem"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.6,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "fairy_craft:greater_fairy_gem"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.6,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "fairy_craft:shiny_fairy_gem"
+                },
+                {
+                  "type": "minecraft:item",
+                  "name": "fairy_craft:brilliant_fairy_gem"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}
