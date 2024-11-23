@@ -23,6 +23,7 @@ public class ModCreativeModeTab {
                         pOutput.accept(ModItems.GREATER_FAIRY_GEM.get());
                         pOutput.accept(ModItems.SHINY_FAIRY_GEM.get());
                         pOutput.accept(ModItems.BRILLIANT_FAIRY_GEM.get());
+                        pOutput.accept(ModItems.MANDRAKE_CROP_SEED.get());
                         pOutput.accept(ModItems.FAIRY_INK_BOTTLE.get());
                         pOutput.accept(ModItems.FAIRY_CRAFT_MUSIC_DISC.get());
                         pOutput.accept(ModItems.EMPTY_SUMMONING_SCROLL.get());

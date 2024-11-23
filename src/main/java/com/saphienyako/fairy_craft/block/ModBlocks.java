@@ -6,6 +6,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -36,13 +37,12 @@ public class ModBlocks {
     public static final RegistryObject<Block> GIANT_DANDELION_FLOWER = registerBlock("giant_dandelion_flower",
             ()-> new DandelionFlowerBlock(4));
 
+    public static final RegistryObject<Block> MANDRAKE_CROP = BLOCKS.register("mandrake_crop",
+            ()-> new MandrakeCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
+
     /* BLOCKS TO BE ADDED IN THIS VERSION
 
     public static final FeyAltarBlock summerFeyAltar = new FeyAltarBlock(FeywildMod.getInstance(), Alignment.SUMMER);
-    public static final FeyAltarBlock winterFeyAltar = new FeyAltarBlock(FeywildMod.getInstance(), Alignment.WINTER);
-    public static final FeyAltarBlock autumnFeyAltar = new FeyAltarBlock(FeywildMod.getInstance(), Alignment.AUTUMN);
-
-    public static final MandrakeCrop mandrakeCrop = new MandrakeCrop();
      */
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
