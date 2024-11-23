@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.saphienyako.fairy_craft.block.ModBlocks;
 import com.saphienyako.fairy_craft.item.ModCreativeModeTab;
 import com.saphienyako.fairy_craft.item.ModItems;
+import com.saphienyako.fairy_craft.network.FairyCraftNetwork;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -38,7 +39,7 @@ public class FairyCraft
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        event.enqueueWork(FairyCraftNetwork::register);
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {

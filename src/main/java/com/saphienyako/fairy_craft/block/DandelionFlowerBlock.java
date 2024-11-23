@@ -1,5 +1,7 @@
 package com.saphienyako.fairy_craft.block;
 
+import com.saphienyako.fairy_craft.network.FairyCraftNetwork;
+import com.saphienyako.fairy_craft.network.ParticleMessage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.game.ClientboundBlockUpdatePacket;
@@ -70,8 +72,9 @@ public class DandelionFlowerBlock extends GiantFlowerBlock{
     @Override
     public void onRemove(@Nonnull BlockState oldState, @Nonnull Level level, @Nonnull BlockPos pos, @Nonnull BlockState newState, boolean moving) {
         super.onRemove(oldState, level, pos, newState, moving);
+
         if (oldState.getValue(VARIANT) == 2) {
-          //  FeywildMod.getNetwork().sendParticles(level, ParticleMessage.Type.DANDELION_FLUFF, pos); //TODO Network
+            FairyCraftNetwork.sendParticles(level, ParticleMessage.Type.DANDELION_FLUFF,pos);
         }
     }
 
