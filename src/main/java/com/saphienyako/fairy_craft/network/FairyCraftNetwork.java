@@ -1,7 +1,6 @@
 package com.saphienyako.fairy_craft.network;
 
 import com.saphienyako.fairy_craft.FairyCraft;
-import io.netty.channel.ChannelHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;

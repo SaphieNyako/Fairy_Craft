@@ -5,7 +5,7 @@ import com.saphienyako.fairy_craft.block.ModBlocks;
 import com.saphienyako.fairy_craft.item.ModCreativeModeTab;
 import com.saphienyako.fairy_craft.item.ModItems;
 import com.saphienyako.fairy_craft.network.FairyCraftNetwork;
-import net.minecraft.world.item.CreativeModeTabs;
+import com.saphienyako.fairy_craft.sound.ModSounds;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -31,6 +31,7 @@ public class FairyCraft
         ModCreativeModeTab.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModSounds.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

@@ -1,0 +1,16 @@
+{
+  "mandrake_scream": {
+    "subtitles": "sounds.fairy_craft.mandrake_scream",
+    "sounds": [
+      "fairy_craft:mandrake_scream"
+    ]
+  },
+  "fairy_craft_music_disc": {
+  "sounds": [
+    {
+      "name": "fairy_craft:fairy_craft_music_disc",
+      "stream": true
+    }
+  ]
+  }
+}

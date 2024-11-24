@@ -1,13 +1,12 @@
 package com.saphienyako.fairy_craft.block;
 
 import com.saphienyako.fairy_craft.item.ModItems;
+import com.saphienyako.fairy_craft.sound.ModSounds;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
@@ -53,7 +52,7 @@ public class MandrakeCropBlock extends CropBlock {
     @Override
     @SuppressWarnings("deprecation")
     public InteractionResult use(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nonnull Player player, @Nonnull InteractionHand hand, @Nonnull BlockHitResult hit) {
-          //  level.playSound(player, pos, ModSoundEvents.mandrakeScream.getSoundEvent(), SoundSource.BLOCKS, 0.6f, 0.8f); //TODO add Sound, add Mandragora Spawn(?)
+            level.playSound(player, pos, ModSounds.MANDRAKE_SCREAM.get(), SoundSource.BLOCKS, 0.6f, 0.8f);
             return super.use(state, level, pos, player, hand, hit);
         }
     }

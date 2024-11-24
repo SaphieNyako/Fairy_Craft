@@ -8,6 +8,7 @@
   "item.fairy_craft.mandrake_crop_seed": "Mandrake Seed",
   "item.fairy_craft.fairy_ink_bottle": "Fairy Ink Bottle",
   "item.fairy_craft.fairy_craft_music_disc": "Fairy Craft Music Disc",
+  "item.fairy_craft.fairy_craft_music_disc.desc": "Song of the Seasons - CC Davy Habets (IKIGA)",
   "item.fairy_craft.empty_summoning_scroll": "Empty Summoning Scroll",
   "item.fairy_craft.summoning_scroll_spring_pixie": "Summoning Scroll Spring Pixie",
   "item.fairy_craft.summoning_scroll_summer_pixie": "Summoning Scroll Summer Pixie",
@@ -26,5 +27,7 @@
   "block.fairy_craft.giant_dandelion_flower_stem": "Dandelion Stem",
   "block.fairy_craft.giant_sun_flower": "Sunflower Stem",
   "block.fairy_craft.giant_sun_flower_stem": "Sunflower Stem",
-  "message.fairy_craft.pixie_dust": "Think happy thoughts!"
+  "message.fairy_craft.pixie_dust": "Think happy thoughts!",
+  "message.fairy_craft.music_disc": "Song of the Seasons - composed, mixed, and mastered by Davy Habets (IKIGA)",
+  "sounds.fairy_craft.mandrake_scream": "Mandrake Screams"
 }

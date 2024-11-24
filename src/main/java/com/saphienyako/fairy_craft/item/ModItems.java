@@ -3,7 +3,6 @@ package com.saphienyako.fairy_craft.item;
 import com.saphienyako.fairy_craft.FairyCraft;
 import com.saphienyako.fairy_craft.block.GiantFlowerBlock;
 import com.saphienyako.fairy_craft.block.ModBlocks;
-import com.saphienyako.fairy_craft.block.SunFlowerBlock;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -26,9 +25,8 @@ public class ModItems {
     public static final RegistryObject<Item> BRILLIANT_FAIRY_GEM = ITEMS.register("brilliant_fairy_gem", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> MANDRAKE_CROP_SEED = ITEMS.register("mandrake_crop_seed", () -> new ItemNameBlockItem(ModBlocks.MANDRAKE_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> FAIRY_INK_BOTTLE = ITEMS.register("fairy_ink_bottle", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> FAIRY_CRAFT_MUSIC_DISC = ITEMS.register("fairy_craft_music_disc", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FAIRY_CRAFT_MUSIC_DISC = ITEMS.register("fairy_craft_music_disc", FairyCraftMusicDiscItem::new);
     //TODO add fairy altar recipe
-    //TODO add custom item and Sound Events for mod
     public static final RegistryObject<Item> EMPTY_SUMMONING_SCROLL = ITEMS.register("empty_summoning_scroll", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SUMMONING_SCROLL_SPRING_PIXIE = ITEMS.register("summoning_scroll_spring_pixie", () -> new Item(new Item.Properties()));
     //TODO add fairy altar recipe
