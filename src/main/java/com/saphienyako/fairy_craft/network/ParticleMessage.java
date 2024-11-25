@@ -38,9 +38,10 @@ public record ParticleMessage(Type type, BlockPos pos) {
                         l.addParticle(ParticleTypes.END_ROD, true,this.pos.getX(), this.pos.getY(), this.pos().getZ(), 0.6 * (ran.nextDouble() - 0.5), 0.6 * (ran.nextDouble() - 0.3), 0.6 * (ran.nextDouble() - 0.5));
                     }
                 }
-                case FEY_HEART -> {
+                case FAIRY_HEART -> {
+                    int y = this.pos.getY() + 1;
                     for (int i = 0; i < 5; i++) {
-                        l.addParticle(ParticleTypes.HEART, true, this.pos.getX() - 0.3 + (0.6 * ran.nextDouble()), this.pos().getY()+ (0.6 * ran.nextDouble()), this.pos.getZ() - 0.3 + (0.6 * ran.nextDouble()), 0, 0, 0);
+                        l.addParticle(ParticleTypes.HEART, true, this.pos.getX() - 0.3 + (0.6 * ran.nextDouble()), y + (0.6 * ran.nextDouble()), this.pos.getZ() - 0.3 + (0.6 * ran.nextDouble()), 0, 0, 0);
                     }
                 }
             }
@@ -49,7 +50,7 @@ public record ParticleMessage(Type type, BlockPos pos) {
     }
 
     public enum Type {
-        DANDELION_FLUFF, FEY_HEART
+        DANDELION_FLUFF, FAIRY_HEART
     }
 }
 

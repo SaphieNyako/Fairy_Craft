@@ -3,11 +3,13 @@ package com.saphienyako.fairy_craft.item;
 import com.saphienyako.fairy_craft.FairyCraft;
 import com.saphienyako.fairy_craft.block.GiantFlowerBlock;
 import com.saphienyako.fairy_craft.block.ModBlocks;
+import com.saphienyako.fairy_craft.entity.ModEntities;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -15,10 +17,9 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModItems {
 
-    //TODO for verion 1: Add Flower Seeds, and Mandrake Crops
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, FairyCraft.MOD_ID);
     public static final RegistryObject<Item> FAIRY_CRAFT_LEXICON = ITEMS.register("fairy_craft_lexicon", () -> new Item(new Item.Properties()));
-    //TODO add patchouli
+    //TODO add patchouli(?)
     public static final RegistryObject<Item> LESSER_FAIRY_GEM = ITEMS.register("lesser_fairy_gem", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GREATER_FAIRY_GEM = ITEMS.register("greater_fairy_gem", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SHINY_FAIRY_GEM = ITEMS.register("shiny_fairy_gem", () -> new Item(new Item.Properties()));
@@ -53,9 +54,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> GIANT_DANDELION_FLOWER_SEED = ITEMS.register("giant_dandelion_flower_seed", () -> new GiantFlowerSeedItem((GiantFlowerBlock) ModBlocks.GIANT_DANDELION_FLOWER.get()));
 
+    public static final RegistryObject<Item> SPAWN_EGG_SPRING_PIXIE = ITEMS.register("spawn_egg_spring_pixie", () -> new ForgeSpawnEggItem(ModEntities.SPRING_PIXIE, 0xf085a9, 0xa1db67, new Item.Properties()));
+
     /* TODO SPAWN EGGS
 
-    public static final Item spawnEggSpringPixie = new ForgeSpawnEggItem(() -> ModEntities.springPixie, 0xf085a9, 0xa1db67, new Item.Properties());
     public static final Item spawnEggSummerPixie = new ForgeSpawnEggItem(() -> ModEntities.summerPixie, 0xf38807, 0xfedc5a, new Item.Properties());
     public static final Item spawnEggAutumnPixie = new ForgeSpawnEggItem(() -> ModEntities.autumnPixie, 0xb73737, 0xa56259, new Item.Properties());
     public static final Item spawnEggWinterPixie = new ForgeSpawnEggItem(() -> ModEntities.winterPixie, 0x84b4be, 0x323c81, new Item.Properties());

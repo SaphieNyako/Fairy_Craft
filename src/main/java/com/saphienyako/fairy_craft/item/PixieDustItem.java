@@ -19,7 +19,6 @@ import net.minecraft.world.level.Level;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Arrays;
 import java.util.List;
 
 public class PixieDustItem extends Item {
@@ -40,7 +39,7 @@ public class PixieDustItem extends Item {
     }
 
     //TODO add config
-    // TODO add LIVITATION_IMMUUM tag
+    // TODO add LIVITATION_IMMUUM tag or config
     //TODO add quest
     @Nonnull
     @Override

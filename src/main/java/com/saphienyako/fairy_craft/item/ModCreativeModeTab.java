@@ -38,6 +38,7 @@ public class ModCreativeModeTab {
                         pOutput.accept(ModItems.GIANT_DANDELION_FLOWER_SEED.get());
                         pOutput.accept(ModBlocks.FAIRY_GEM_ORE.get());
                         pOutput.accept(ModBlocks.FAIRY_GEM_ORE_DEEP_SLATE.get());
+                        pOutput.accept(ModItems.SPAWN_EGG_SPRING_PIXIE.get());
                     })
                     .build());
 

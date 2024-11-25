@@ -1,11 +1,17 @@
 package com.saphienyako.fairy_craft.item;
 
+import com.saphienyako.fairy_craft.block.CrocusFlowerBlock;
 import com.saphienyako.fairy_craft.block.GiantFlowerBlock;
+import com.saphienyako.fairy_craft.block.ModBlocks;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
@@ -14,6 +20,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Objects;
 
 public class GiantFlowerSeedItem extends Item {
@@ -54,5 +62,21 @@ public class GiantFlowerSeedItem extends Item {
             if (context.getPlayer() != null && !context.getPlayer().isCreative()) context.getItemInHand().shrink(1);
         }
         return InteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+    @Override
+    public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level level, @Nonnull List<Component> tooltip, @Nonnull TooltipFlag flag) {
+        if (level != null) {
+            if(this.block == ModBlocks.GIANT_SUN_FLOWER.get()) {
+                tooltip.add(Component.translatable("message.fairy_craft.giant_sun_flower").withStyle(ChatFormatting.BLUE));
+            }
+            if(this.block == ModBlocks.GIANT_CROCUS_FLOWER.get()) {
+                tooltip.add(Component.translatable("message.fairy_craft.giant_crocus_flower").withStyle(ChatFormatting.BLUE));
+            }
+            if(this.block == ModBlocks.GIANT_DANDELION_FLOWER.get()) {
+                tooltip.add(Component.translatable("message.fairy_craft.giant_sun_flower").withStyle(ChatFormatting.BLUE));
+            }
+        }
+        super.appendHoverText(stack, level, tooltip, flag);
     }
 }
