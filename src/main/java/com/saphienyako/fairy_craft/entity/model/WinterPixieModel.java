@@ -101,7 +101,7 @@ public class WinterPixieModel <T extends Entity> extends HierarchicalModel<T> {
         this.applyHeadRotation(netHeadYaw, headPitch, ageInTicks);
 
         this.animate(((WinterPixieEntity)entity).IDLE_ANIMATION, WinterPixieAnimations.IDLE, ageInTicks, 2f);
-        this.animate(((WinterPixieEntity)entity).SPELL_CASTING_ANIMATION, WinterPixieAnimations.IDLE, ageInTicks, 2f);
+        this.animate(((WinterPixieEntity)entity).SPELL_CASTING_ANIMATION, WinterPixieAnimations.SPELL_CASTING, ageInTicks, 1.0f);
     }
 
     private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {

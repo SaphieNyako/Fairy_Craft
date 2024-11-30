@@ -6,6 +6,7 @@ import net.minecraft.client.animation.Keyframe;
 import net.minecraft.client.animation.KeyframeAnimations;
 
 public class WinterPixieAnimations {
+        //TODO maybe change length of casting animation
     public static final AnimationDefinition POSE = AnimationDefinition.Builder.withLength(0.0F)
             .addAnimation("body", new AnimationChannel(AnimationChannel.Targets.SCALE,
                     new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.85F, 0.85F, 0.85F), AnimationChannel.Interpolations.LINEAR)

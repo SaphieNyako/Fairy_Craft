@@ -1,6 +1,9 @@
 package com.saphienyako.fairy_craft.entity.base;
 
+import com.saphienyako.fairy_craft.effect.ModEffects;
 import com.saphienyako.fairy_craft.entity.SpringPixieEntity;
+import com.saphienyako.fairy_craft.entity.goals.BlessingEffectGoal;
+import com.saphienyako.fairy_craft.entity.goals.PanicGoal;
 import com.saphienyako.fairy_craft.item.ModItems;
 import com.saphienyako.fairy_craft.network.FairyCraftNetwork;
 import com.saphienyako.fairy_craft.network.ParticleMessage;
@@ -13,12 +16,15 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
@@ -30,7 +36,10 @@ public abstract class PixieBase extends FlyingFairyBase{
 
     public static final EntityDataAccessor<Integer> STATE = SynchedEntityData.defineId(SpringPixieEntity.class, EntityDataSerializers.INT);
     public final AnimationState IDLE_ANIMATION = new AnimationState();
+    private int idleAnimationTimeout = 0;
+
     public final AnimationState SPELL_CASTING_ANIMATION = new AnimationState();
+    public int spellCastingAnimationTimeout = 0;
     protected PixieBase(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
     }
@@ -41,9 +50,9 @@ public abstract class PixieBase extends FlyingFairyBase{
     @OverridingMethodsMustInvokeSuper
     protected void registerGoals() {
         super.registerGoals();
-        //  this.goalSelector.addGoal(20, new AbilityGoal(this)); TODO
-        //  this.goalSelector.addGoal(50, new FeywildPanicGoal(this, 0.003, 13)); TODO
-        //  this.goalSelector.addGoal(10, new TameCheckingGoal(this, false, new TemptGoal(this, 1.25, Ingredient.of(Items.COOKIE), false))); TODO
+        this.goalSelector.addGoal(50, new PanicGoal(this, 0.003, 13));
+        this.goalSelector.addGoal(20, new BlessingEffectGoal(this, getMobEffect(), this.level()));
+        this.goalSelector.addGoal(10, new TemptGoal(this, 1.25, Ingredient.of(Items.COOKIE), false)); //TODO Tamed?
     }
 
     @Override
@@ -62,14 +71,26 @@ public abstract class PixieBase extends FlyingFairyBase{
     }
 
     private void setupAnimationStates() {
-        if (!this.dead && !this.isDeadOrDying()) {
-            if (this.getState() == SpringPixieEntity.State.SPELL_CASTING) {
-                this.SPELL_CASTING_ANIMATION.animateWhen(this.getState() == SpringPixieEntity.State.SPELL_CASTING, 1);
-            }
+
+        if(getState().equals(State.IDLE) && idleAnimationTimeout <= 0) {
+            this.idleAnimationTimeout = this.random.nextInt(40) + 80;
+            this.IDLE_ANIMATION.start(this.tickCount);
+        } else {
+            --this.idleAnimationTimeout;
         }
-        if(this.getState() == SpringPixieEntity.State.IDLE){
-            this.IDLE_ANIMATION.startIfStopped(1);
+
+        if(getState().equals(State.SPELL_CASTING) && spellCastingAnimationTimeout <= 0) {
+            this.IDLE_ANIMATION.stop();
+            spellCastingAnimationTimeout = 85;
+            SPELL_CASTING_ANIMATION.start(this.tickCount);
+        } else {
+            --this.spellCastingAnimationTimeout;
         }
+
+        if(!getState().equals(State.SPELL_CASTING)) {
+            SPELL_CASTING_ANIMATION.stop();
+        }
+      //TODO make FLY and IDLE work, check for moving?
     }
 
     @Nonnull
@@ -87,7 +108,7 @@ public abstract class PixieBase extends FlyingFairyBase{
                 this.heal(3);
                 if (!this.isTamed() && player instanceof ServerPlayer && this.owner == null) {
                     Random random = new Random();
-                    if (random.nextInt(4) == 0) {
+                    if (random.nextInt(6) == 0) {
                         this.spawnAtLocation(new ItemStack(ModItems.PIXIE_DUST.get()));
                         this.playSound(SoundEvents.ENDERMAN_TELEPORT);
                         this.discard();
@@ -129,6 +150,8 @@ public abstract class PixieBase extends FlyingFairyBase{
 
     protected abstract Component getPixieNameMessage();
     protected abstract Component getPixieCookieMessage();
+
+    protected abstract MobEffect getMobEffect();
 
     private boolean tryAcceptGift(ServerPlayer player, InteractionHand hand) {
       /*  ItemStack stack = player.getItemInHand(hand);

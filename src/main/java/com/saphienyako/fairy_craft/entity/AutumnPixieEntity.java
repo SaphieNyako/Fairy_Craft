@@ -1,10 +1,18 @@
 package com.saphienyako.fairy_craft.entity;
 
+import com.saphienyako.fairy_craft.effect.ModEffects;
 import com.saphienyako.fairy_craft.entity.base.PixieBase;
+import com.saphienyako.fairy_craft.entity.goals.BlessingEffectGoal;
+import com.saphienyako.fairy_craft.particle.ModParticles;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.OverridingMethodsMustInvokeSuper;
 
 public class AutumnPixieEntity extends PixieBase {
     protected AutumnPixieEntity(EntityType<? extends PathfinderMob> entityType, Level level) {
@@ -21,37 +29,14 @@ public class AutumnPixieEntity extends PixieBase {
         return  Component.translatable("message.fairy_craft.autumn_pixie_feed");
     }
 
-    //TODO Custom Particles
-
-     /*  TODO Ability
-    @Override
-    protected Ability<?> getDefaultAbility() {
-        return ModAbilities.flowerWalk;
-    }
-
+    @Nullable
     @Override
     public SimpleParticleType getParticle() {
-        return ModParticles.springSparkleParticle;
-    }
-
-    public Ability<?> getAbility() {
-        if (this.ability == null) this.ability = this.getDefaultAbility();
-        return this.ability;
-    }
-
-    public void setAbility(Ability<?> ability) {
-        this.ability = ability;
+        return ModParticles.AUTUMN_SPARKLE_PARTICLE.get();
     }
 
     @Override
-    public void addAdditionalSaveData(@Nonnull CompoundTag nbt) {
-        super.addAdditionalSaveData(nbt);
-        NbtX.putResource(nbt, "PixieAbility", this.getAbility().id());
+    protected MobEffect getMobEffect() {
+        return ModEffects.AUTUMN_BLESSING.get();
     }
-
-    @Override
-    public void readAdditionalSaveData(@Nonnull CompoundTag nbt) {
-        super.readAdditionalSaveData(nbt);
-        this.setAbility(Ability.get(NbtX.getResource(nbt, "PixieAbility"), this.getDefaultAbility()));
-    } */
 }

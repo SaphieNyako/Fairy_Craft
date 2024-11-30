@@ -15,6 +15,7 @@ public class ModSounds {
 
     public static final RegistryObject<SoundEvent> MANDRAKE_SCREAM = registerSoundEvents("mandrake_scream");
     public static final RegistryObject<SoundEvent> FAIRY_CRAFT_MUSIC_DISC = registerSoundEvents("fairy_craft_music_disc");
+    public static final RegistryObject<SoundEvent> PIXIE_SPELL_CASTING = registerSoundEvents("pixie_spell_casting");
 
 
     private static RegistryObject<SoundEvent> registerSoundEvents(String name) {

@@ -36,5 +36,10 @@
   "message.fairy_craft.giant_sun_flower": "Plant me!",
   "message.fairy_craft.giant_crocus_flower": "Plant me! ",
   "message.fairy_craft.giant_dandelion_flower": "Plant me!",
-  "sounds.fairy_craft.mandrake_scream": "Mandrake Screams"
+  "sounds.fairy_craft.mandrake_scream": "Mandrake Screams",
+  "sounds.fairy_craft.pixie_spell_casting": "Pixie is Casting a Spell",
+  "effect.fairy_craft.summer_blessing": "Summer's Blessing",
+  "effect.fairy_craft.spring_blessing": "Spring's Blessing",
+  "effect.fairy_craft.winter_blessing": "Winter's Blessing",
+  "effect.fairy_craft.autumn_blessing": "Autumn's Blessing"
 }

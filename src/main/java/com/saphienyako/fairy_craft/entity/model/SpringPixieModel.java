@@ -106,7 +106,7 @@ public class SpringPixieModel<T extends Entity> extends HierarchicalModel<T> {
 		this.applyHeadRotation(netHeadYaw, headPitch, ageInTicks);
 
 		this.animate(((SpringPixieEntity)entity).IDLE_ANIMATION, SpringPixieAnimations.IDLE, ageInTicks, 2f);
-		this.animate(((SpringPixieEntity)entity).SPELL_CASTING_ANIMATION, SpringPixieAnimations.IDLE, ageInTicks, 2f);
+		this.animate(((SpringPixieEntity)entity).SPELL_CASTING_ANIMATION, SpringPixieAnimations.SPELL_CASTING, ageInTicks, 1.0f);
 	}
 
 	private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {

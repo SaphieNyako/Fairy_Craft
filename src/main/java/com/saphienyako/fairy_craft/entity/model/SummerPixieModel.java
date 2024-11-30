@@ -102,7 +102,7 @@ public class SummerPixieModel<T extends Entity> extends HierarchicalModel<T> {
         this.applyHeadRotation(netHeadYaw, headPitch, ageInTicks);
 
         this.animate(((SummerPixieEntity)entity).IDLE_ANIMATION, SummerPixieAnimations.IDLE, ageInTicks, 2f);
-        this.animate(((SummerPixieEntity)entity).SPELL_CASTING_ANIMATION, SummerPixieAnimations.IDLE, ageInTicks, 2f);
+        this.animate(((SummerPixieEntity)entity).SPELL_CASTING_ANIMATION, SummerPixieAnimations.SPELL_CASTING, ageInTicks, 1.0f);
     }
 
     private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {

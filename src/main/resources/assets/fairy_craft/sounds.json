@@ -12,5 +12,11 @@
       "stream": true
     }
   ]
+  },
+  "pixie_spell_casting": {
+    "subtitles": "sounds.fairy_craft.pixie_spell_casting",
+    "sounds": [
+      "fairy_craft:pixie_spell_casting"
+    ]
   }
 }

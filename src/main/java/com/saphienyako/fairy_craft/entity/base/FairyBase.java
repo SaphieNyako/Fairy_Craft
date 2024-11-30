@@ -2,6 +2,7 @@ package com.saphienyako.fairy_craft.entity.base;
 
 import com.saphienyako.fairy_craft.entity.base.intereface.IOwnable;
 import com.saphienyako.fairy_craft.entity.base.intereface.ISummonable;
+import com.saphienyako.fairy_craft.entity.goals.GoToTargetPositionGoal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
@@ -89,7 +90,7 @@ public abstract class FairyBase extends PathfinderMob implements IOwnable, ISumm
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(30, new LookAtPlayerGoal(this, Player.class, 8f));
-      //  this.goalSelector.addGoal(11, new GoToTargetPositionGoal(this, this::getCurrentPointOfInterest, 6, this.getTargetPositionSpeed())); TODO
+        this.goalSelector.addGoal(11, new GoToTargetPositionGoal(this, this::getCurrentPointOfInterest, 6, this.getTargetPositionSpeed()));
         this.goalSelector.addGoal(30, new RandomLookAroundGoal(this));
     }
 

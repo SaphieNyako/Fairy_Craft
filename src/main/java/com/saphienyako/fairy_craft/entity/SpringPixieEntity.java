@@ -1,10 +1,23 @@
 package com.saphienyako.fairy_craft.entity;
 
+import com.saphienyako.fairy_craft.effect.ModEffects;
 import com.saphienyako.fairy_craft.entity.base.PixieBase;
+import com.saphienyako.fairy_craft.entity.goals.BlessingEffectGoal;
+import com.saphienyako.fairy_craft.entity.goals.BreedAbilityGoal;
+import com.saphienyako.fairy_craft.entity.goals.PanicGoal;
+import com.saphienyako.fairy_craft.particle.ModParticles;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.goal.TemptGoal;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.OverridingMethodsMustInvokeSuper;
 
 public class SpringPixieEntity extends PixieBase {
 
@@ -22,37 +35,14 @@ public class SpringPixieEntity extends PixieBase {
         return  Component.translatable("message.fairy_craft.spring_pixie_feed");
     }
 
-    //TODO Custom Particles
-
-     /*  TODO Ability
     @Override
-    protected Ability<?> getDefaultAbility() {
-        return ModAbilities.flowerWalk;
+    protected MobEffect getMobEffect() {
+        return ModEffects.SPRING_BLESSING.get();
     }
 
+    @Nullable
     @Override
     public SimpleParticleType getParticle() {
-        return ModParticles.springSparkleParticle;
+        return ModParticles.SPRING_SPARKLE_PARTICLE.get();
     }
-
-    public Ability<?> getAbility() {
-        if (this.ability == null) this.ability = this.getDefaultAbility();
-        return this.ability;
-    }
-
-    public void setAbility(Ability<?> ability) {
-        this.ability = ability;
-    }
-
-    @Override
-    public void addAdditionalSaveData(@Nonnull CompoundTag nbt) {
-        super.addAdditionalSaveData(nbt);
-        NbtX.putResource(nbt, "PixieAbility", this.getAbility().id());
-    }
-
-    @Override
-    public void readAdditionalSaveData(@Nonnull CompoundTag nbt) {
-        super.readAdditionalSaveData(nbt);
-        this.setAbility(Ability.get(NbtX.getResource(nbt, "PixieAbility"), this.getDefaultAbility()));
-    } */
 }
