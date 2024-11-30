@@ -15,8 +15,19 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<SpringPixieEntity>> SPRING_PIXIE =
             ENTITY_TYPES.register("spring_pixie", () -> EntityType.Builder.of(SpringPixieEntity::new, MobCategory.CREATURE)
-                    .sized(0.7f, 1).build("spring_pixie")); //TODO check size problems with hit box in old version
+                    .sized(0.7f, 0.7f).build("spring_pixie")); //TODO check size problems with hit box in old version
 
+    public static final RegistryObject<EntityType<SummerPixieEntity>> SUMMER_PIXIE =
+            ENTITY_TYPES.register("summer_pixie", () -> EntityType.Builder.of(SummerPixieEntity::new, MobCategory.CREATURE)
+                    .sized(0.7f, 0.7f).build("summer_pixie"));
+
+    public static final RegistryObject<EntityType<WinterPixieEntity>> WINTER_PIXIE =
+            ENTITY_TYPES.register("winter_pixie", () -> EntityType.Builder.of(WinterPixieEntity::new, MobCategory.CREATURE)
+                    .sized(0.7f, 0.7f).build("winter_pixie"));
+
+    public static final RegistryObject<EntityType<AutumnPixieEntity>> AUTUMN_PIXIE =
+            ENTITY_TYPES.register("autumn_pixie", () -> EntityType.Builder.of(AutumnPixieEntity::new, MobCategory.CREATURE)
+                    .sized(0.7f, 0.7f).build("autumn_pixie"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

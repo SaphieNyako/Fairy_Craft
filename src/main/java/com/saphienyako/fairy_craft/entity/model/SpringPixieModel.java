@@ -13,8 +13,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 
 public class SpringPixieModel<T extends Entity> extends HierarchicalModel<T> {
-	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	//public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "fairy"), "main");
 	private final ModelPart spring_pixie;
 	private final ModelPart head;
 	private final ModelPart left_ear;
@@ -109,10 +107,6 @@ public class SpringPixieModel<T extends Entity> extends HierarchicalModel<T> {
 
 		this.animate(((SpringPixieEntity)entity).IDLE_ANIMATION, SpringPixieAnimations.IDLE, ageInTicks, 2f);
 		this.animate(((SpringPixieEntity)entity).SPELL_CASTING_ANIMATION, SpringPixieAnimations.IDLE, ageInTicks, 2f);
-		/* EXAMPLE
-		this.animateWalk(ModAnimationDefinitions.RHINO_WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
-		this.animate(((RhinoEntity) entity).idleAnimationState, ModAnimationDefinitions.RHINO_IDLE, ageInTicks, 1f);
-		 */
 	}
 
 	private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {

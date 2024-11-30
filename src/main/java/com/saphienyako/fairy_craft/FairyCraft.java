@@ -2,11 +2,12 @@ package com.saphienyako.fairy_craft;
 
 import com.mojang.logging.LogUtils;
 import com.saphienyako.fairy_craft.block.ModBlocks;
-import com.saphienyako.fairy_craft.entity.ModEntities;
-import com.saphienyako.fairy_craft.entity.SpringPixieEntity;
-import com.saphienyako.fairy_craft.entity.model.ModModelLayers;
-import com.saphienyako.fairy_craft.entity.model.SpringPixieModel;
+import com.saphienyako.fairy_craft.entity.*;
+import com.saphienyako.fairy_craft.entity.model.*;
+import com.saphienyako.fairy_craft.entity.renderer.AutumnPixieRenderer;
 import com.saphienyako.fairy_craft.entity.renderer.SpringPixieRenderer;
+import com.saphienyako.fairy_craft.entity.renderer.SummerPixieRenderer;
+import com.saphienyako.fairy_craft.entity.renderer.WinterPixieRenderer;
 import com.saphienyako.fairy_craft.item.ModCreativeModeTab;
 import com.saphienyako.fairy_craft.item.ModItems;
 import com.saphienyako.fairy_craft.network.FairyCraftNetwork;
@@ -55,11 +56,17 @@ public class FairyCraft
 
     private void entityAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.SPRING_PIXIE.get(), SpringPixieEntity.getDefaultAttributes().build());
+        event.put(ModEntities.AUTUMN_PIXIE.get(), AutumnPixieEntity.getDefaultAttributes().build());
+        event.put(ModEntities.SUMMER_PIXIE.get(), SummerPixieEntity.getDefaultAttributes().build());
+        event.put(ModEntities.WINTER_PIXIE.get(), WinterPixieEntity.getDefaultAttributes().build());
     }
 
     @OnlyIn(Dist.CLIENT)
     private void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModModelLayers.SPRING_PIXIE_LAYER, SpringPixieModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.AUTUMN_PIXIE_LAYER, AutumnPixieModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.SUMMER_PIXIE_LAYER, SummerPixieModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.WINTER_PIXIE_LAYER, WinterPixieModel::createBodyLayer);
     }
 
 
@@ -81,6 +88,9 @@ public class FairyCraft
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.SPRING_PIXIE.get(), SpringPixieRenderer::new);
+            EntityRenderers.register(ModEntities.AUTUMN_PIXIE.get(), AutumnPixieRenderer::new);
+            EntityRenderers.register(ModEntities.SUMMER_PIXIE.get(), SummerPixieRenderer::new);
+            EntityRenderers.register(ModEntities.WINTER_PIXIE.get(), WinterPixieRenderer::new);
         }
     }
 }

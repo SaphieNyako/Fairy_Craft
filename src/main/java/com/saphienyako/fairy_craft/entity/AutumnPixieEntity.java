@@ -6,20 +6,19 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.level.Level;
 
-public class SpringPixieEntity extends PixieBase {
-
-    protected SpringPixieEntity(EntityType<? extends PathfinderMob> entityType, Level level) {
+public class AutumnPixieEntity extends PixieBase {
+    protected AutumnPixieEntity(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
     }
 
     @Override
     protected Component getPixieNameMessage() {
-        return  Component.translatable("message.fairy_craft.spring_pixie_name");
+        return  Component.translatable("message.fairy_craft.autumn_pixie_name");
     }
 
     @Override
     protected Component getPixieCookieMessage() {
-        return  Component.translatable("message.fairy_craft.spring_pixie_feed");
+        return  Component.translatable("message.fairy_craft.autumn_pixie_feed");
     }
 
     //TODO Custom Particles

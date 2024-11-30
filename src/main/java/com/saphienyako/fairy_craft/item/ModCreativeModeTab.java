@@ -39,6 +39,9 @@ public class ModCreativeModeTab {
                         pOutput.accept(ModBlocks.FAIRY_GEM_ORE.get());
                         pOutput.accept(ModBlocks.FAIRY_GEM_ORE_DEEP_SLATE.get());
                         pOutput.accept(ModItems.SPAWN_EGG_SPRING_PIXIE.get());
+                        pOutput.accept(ModItems.SPAWN_EGG_AUTUMN_PIXIE.get());
+                        pOutput.accept(ModItems.SPAWN_EGG_SUMMER_PIXIE.get());
+                        pOutput.accept(ModItems.SPAWN_EGG_WINTER_PIXIE.get());
                     })
                     .build());
 
