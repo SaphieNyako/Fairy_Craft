@@ -39,10 +39,13 @@ public class ModBlocks {
     public static final RegistryObject<Block> MANDRAKE_CROP = BLOCKS.register("mandrake_crop",
             ()-> new MandrakeCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
 
-    /* BLOCKS TO BE ADDED IN THIS VERSION
 
-    public static final FeyAltarBlock summerFeyAltar = new FeyAltarBlock(FeywildMod.getInstance(), Alignment.SUMMER);
-     */
+    public static final RegistryObject<Block> FAIRY_ALTAR = registerBlockAndItem("fairy_altar",
+            () -> new FairyAltarBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3f, 10f).requiresCorrectToolForDrops().sound(SoundType.STONE).noOcclusion()));
+    //TODO require correct Tool for Drops
+    //TODO are both textures for block required?
+    //TODO add recipe
+    //TODO add GUI
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);

@@ -1,0 +1,12 @@
+{
+  "parent": "forge:item/default",
+  "base": {
+    "parent": "fairy_craft:block/fairy_altar"
+  },
+  "loader": "forge:separate_transforms",
+  "perspectives": {
+    "gui": {
+      "parent": "fairy_craft:item/fairy_altar_inventory"
+    }
+  }
+}

@@ -2,6 +2,7 @@ package com.saphienyako.fairy_craft;
 
 import com.mojang.logging.LogUtils;
 import com.saphienyako.fairy_craft.block.ModBlocks;
+import com.saphienyako.fairy_craft.block.entity.ModBlockEntities;
 import com.saphienyako.fairy_craft.effect.ModEffects;
 import com.saphienyako.fairy_craft.entity.*;
 import com.saphienyako.fairy_craft.entity.model.*;
@@ -15,9 +16,11 @@ import com.saphienyako.fairy_craft.network.FairyCraftNetwork;
 import com.saphienyako.fairy_craft.particle.LeafParticle;
 import com.saphienyako.fairy_craft.particle.ModParticles;
 import com.saphienyako.fairy_craft.particle.SparkleParticle;
+import com.saphienyako.fairy_craft.screen.FairyAltarScreen;
+import com.saphienyako.fairy_craft.screen.ModMenuTypes;
 import com.saphienyako.fairy_craft.sound.ModSounds;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -26,7 +29,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -34,11 +36,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.NewRegistryEvent;
-import net.minecraftforge.registries.RegistryBuilder;
 import org.slf4j.Logger;
-
-import javax.annotation.Nonnull;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(FairyCraft.MOD_ID)
@@ -61,6 +59,8 @@ public class FairyCraft
         ModEntities.register(modEventBus);
         ModEffects.register(modEventBus);
         ModParticles.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -105,6 +105,8 @@ public class FairyCraft
             EntityRenderers.register(ModEntities.AUTUMN_PIXIE.get(), AutumnPixieRenderer::new);
             EntityRenderers.register(ModEntities.SUMMER_PIXIE.get(), SummerPixieRenderer::new);
             EntityRenderers.register(ModEntities.WINTER_PIXIE.get(), WinterPixieRenderer::new);
+
+            MenuScreens.register(ModMenuTypes.FAIRY_ALTAR_MENU.get(), FairyAltarScreen::new);
         }
     }
 
