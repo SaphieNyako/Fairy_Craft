@@ -16,6 +16,7 @@ import com.saphienyako.fairy_craft.network.FairyCraftNetwork;
 import com.saphienyako.fairy_craft.particle.LeafParticle;
 import com.saphienyako.fairy_craft.particle.ModParticles;
 import com.saphienyako.fairy_craft.particle.SparkleParticle;
+import com.saphienyako.fairy_craft.recipe.ModRecipes;
 import com.saphienyako.fairy_craft.screen.FairyAltarScreen;
 import com.saphienyako.fairy_craft.screen.ModMenuTypes;
 import com.saphienyako.fairy_craft.sound.ModSounds;
@@ -61,6 +62,7 @@ public class FairyCraft
         ModParticles.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+        ModRecipes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -111,15 +113,6 @@ public class FairyCraft
     }
 
     public void registerParticles(RegisterParticleProvidersEvent event) {
-        /* TODO TO ADD
-        event.registerSpriteSet(ModParticles.springLeafParticle, LeafParticle.Factory::new);
-        event.registerSpriteSet(ModParticles.summerLeafParticle, LeafParticle.Factory::new);
-        event.registerSpriteSet(ModParticles.winterLeafParticle, LeafParticle.Factory::new);
-        event.registerSpriteSet(ModParticles.hexenLeafParticle, LeafParticle.Factory::new);
-        event.registerSpriteSet(ModParticles.blossomLeafParticle, LeafParticle.Factory::new);
-        event.registerSpriteSet(ModParticles.frostWalkParticle, LeafParticle.Factory::new);
-
-         */
         event.registerSpriteSet(ModParticles.AUTUMN_LEAF_PARTICLE.get(), LeafParticle.Factory::new);
         event.registerSpriteSet(ModParticles.SPRING_SPARKLE_PARTICLE.get(), SparkleParticle.provider(0, 1, 0));
         event.registerSpriteSet(ModParticles.SUMMER_SPARKLE_PARTICLE.get(), SparkleParticle.provider(1, 0.8f, 0));

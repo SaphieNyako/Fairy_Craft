@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:seeds"
+    },
+    {
+      "item": "fairy_craft:pixie_dust"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "fairy_craft:mandrake_crop_seed"
+  }
+}

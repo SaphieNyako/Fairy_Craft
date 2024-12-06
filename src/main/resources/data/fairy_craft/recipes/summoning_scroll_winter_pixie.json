@@ -1,0 +1,24 @@
+{
+  "type": "fairy_craft:fairy_altar",
+  "ingredients": [
+    {
+      "item": "fairy_craft:pixie_dust"
+    },
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "item": "minecraft:ice"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "item": "fairy_craft:empty_summoning_scroll"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "fairy_craft:summoning_scroll_winter_pixie"
+  }
+}

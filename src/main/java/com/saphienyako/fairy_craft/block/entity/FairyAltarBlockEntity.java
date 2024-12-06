@@ -1,6 +1,7 @@
 package com.saphienyako.fairy_craft.block.entity;
 
 import com.saphienyako.fairy_craft.item.ModItems;
+import com.saphienyako.fairy_craft.recipe.FairyAltarRecipe;
 import com.saphienyako.fairy_craft.screen.FairyAltarMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -19,26 +20,27 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.data.ForgeItemTagsProvider;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Optional;
+
 public class FairyAltarBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(6);
-
     private static final int INPUT_SLOT_00 = 0;
     private static final int INPUT_SLOT_01 = 1;
     private static final int INPUT_SLOT_02 = 2;
     private static final int INPUT_SLOT_03 = 3;
     private static final int INPUT_SLOT_04 = 4;
     private static final int OUTPUT_SLOT = 5;
-
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
-
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 40;
@@ -78,10 +80,6 @@ public class FairyAltarBlockEntity extends BlockEntity implements MenuProvider {
         }
 
         return super.getCapability(cap, side);
-    }
-
-    public int getProgress() {
-        return this.progress;
     }
 
     public void drops() {
@@ -150,18 +148,29 @@ public class FairyAltarBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private boolean hasRecipe() {
-        //TODO loop over or create recipe
-        boolean slot_01 = this.itemHandler.getStackInSlot(INPUT_SLOT_00).getItem() == Items.OAK_SAPLING;
-        boolean slot_02 = this.itemHandler.getStackInSlot(INPUT_SLOT_01).getItem() == Items.OXEYE_DAISY;
-        boolean slot_03 = this.itemHandler.getStackInSlot(INPUT_SLOT_02).getItem() == Items.WHEAT_SEEDS;
-        boolean slot_04 = this.itemHandler.getStackInSlot(INPUT_SLOT_03).getItem() == Items.EGG;
-        boolean slot_05 = this.itemHandler.getStackInSlot(INPUT_SLOT_04).getItem() == ModItems.EMPTY_SUMMONING_SCROLL.get();
-        ItemStack result = new ItemStack(ModItems.SUMMONING_SCROLL_SPRING_PIXIE.get());
-        return slot_01 && slot_02 && slot_03 && slot_04 && slot_05  && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+        Optional<FairyAltarRecipe> recipe = getCurrentRecipe();
+
+        if(recipe.isEmpty()) {
+            return false;
+        }
+        ItemStack result = recipe.get().getResultItem(getLevel().registryAccess());
+
+        return canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+    }
+
+    private Optional<FairyAltarRecipe> getCurrentRecipe() {
+        SimpleContainer inventory = new SimpleContainer(this.itemHandler.getSlots());
+        for(int i = 0; i < itemHandler.getSlots(); i++) {
+            inventory.setItem(i, this.itemHandler.getStackInSlot(i));
+        }
+
+        return this.level.getRecipeManager().getRecipeFor(FairyAltarRecipe.Type.INSTANCE, inventory, level);
     }
 
     private void craftItem() {
-        ItemStack result = new ItemStack(ModItems.SUMMONING_SCROLL_SPRING_PIXIE.get(), 1);
+        Optional<FairyAltarRecipe> recipe = getCurrentRecipe();
+        ItemStack result = recipe.get().getResultItem(null);
+
         this.itemHandler.extractItem(INPUT_SLOT_00, 1, false);
         this.itemHandler.extractItem(INPUT_SLOT_01, 1, false);
         this.itemHandler.extractItem(INPUT_SLOT_02, 1, false);

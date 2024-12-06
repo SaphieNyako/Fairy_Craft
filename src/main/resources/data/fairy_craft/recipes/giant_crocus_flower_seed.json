@@ -1,0 +1,24 @@
+ {
+  "type": "fairy_craft:fairy_altar",
+  "ingredients": [
+    {
+      "item": "fairy_craft:pixie_dust"
+    },
+    {
+      "tag": "forge:seeds"
+    },
+    {
+      "item": "minecraft:cornflower"
+    },
+    {
+      "tag": "forge:seeds"
+    },
+    {
+      "item": "minecraft:cornflower"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "fairy_craft:giant_crocus_flower_seed"
+  }
+}

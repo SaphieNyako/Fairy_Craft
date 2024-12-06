@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#S#",
+    " _ "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:smooth_stone"
+    },
+    "S": {
+      "item": "fairy_craft:lesser_fairy_gem"
+    },
+    "_": {
+      "item": "minecraft:smooth_stone_slab"
+    }
+  },
+  "result": {
+    "item": "fairy_craft:fairy_altar",
+    "count": 1
+  }
+}

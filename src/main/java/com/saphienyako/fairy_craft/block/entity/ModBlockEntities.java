@@ -13,11 +13,9 @@ public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, FairyCraft.MOD_ID);
 
-
     public static final RegistryObject<BlockEntityType<FairyAltarBlockEntity>> FAIRY_ALTAR_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("fairy_altar_block_entity", ()->
             BlockEntityType.Builder.of(FairyAltarBlockEntity::new,ModBlocks.FAIRY_ALTAR.get()).build(null));
-
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

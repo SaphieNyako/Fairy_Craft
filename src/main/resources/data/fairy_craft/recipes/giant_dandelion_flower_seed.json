@@ -1,0 +1,24 @@
+ {
+  "type": "fairy_craft:fairy_altar",
+  "ingredients": [
+    {
+      "item": "fairy_craft:pixie_dust"
+    },
+    {
+      "tag": "forge:seeds"
+    },
+    {
+      "item": "minecraft:dandelion"
+    },
+    {
+      "tag": "forge:seeds"
+    },
+    {
+      "item": "minecraft:dandelion"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "fairy_craft:giant_dandelion_flower_seed"
+  }
+}

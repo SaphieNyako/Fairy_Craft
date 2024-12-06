@@ -1,0 +1,24 @@
+{
+  "type": "fairy_craft:fairy_altar",
+  "ingredients": [
+    {
+      "item": "fairy_craft:pixie_dust"
+    },
+    {
+      "item": "minecraft:sunflower"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    },
+    {
+      "item": "minecraft:golden_sword"
+    },
+    {
+      "item": "fairy_craft:empty_summoning_scroll"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "fairy_craft:summoning_scroll_summer_pixie"
+  }
+}
