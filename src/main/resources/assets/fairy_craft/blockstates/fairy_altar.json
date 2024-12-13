@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "fairy_craft:block/fairy_altar",
+      "y": 90
+    },
+    "facing=north": {
       "model": "fairy_craft:block/fairy_altar"
+    },
+    "facing=south": {
+      "model": "fairy_craft:block/fairy_altar",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "fairy_craft:block/fairy_altar",
+      "y": 270
     }
   }
 }

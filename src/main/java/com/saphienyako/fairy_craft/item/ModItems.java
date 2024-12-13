@@ -20,6 +20,7 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, FairyCraft.MOD_ID);
     public static final RegistryObject<Item> FAIRY_CRAFT_LEXICON = ITEMS.register("fairy_craft_lexicon", () -> new Item(new Item.Properties()));
     //TODO add patchouli(?)
+    //TODO JEI
     public static final RegistryObject<Item> LESSER_FAIRY_GEM = ITEMS.register("lesser_fairy_gem", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GREATER_FAIRY_GEM = ITEMS.register("greater_fairy_gem", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SHINY_FAIRY_GEM = ITEMS.register("shiny_fairy_gem", () -> new Item(new Item.Properties()));
@@ -28,6 +29,9 @@ public class ModItems {
     public static final RegistryObject<Item> FAIRY_INK_BOTTLE = ITEMS.register("fairy_ink_bottle", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FAIRY_CRAFT_MUSIC_DISC = ITEMS.register("fairy_craft_music_disc", FairyCraftMusicDiscItem::new);
     public static final RegistryObject<Item> EMPTY_SUMMONING_SCROLL = ITEMS.register("empty_summoning_scroll", () -> new Item(new Item.Properties()));
+
+    //TODO summon pixies
+    //TODO quest giver
     public static final RegistryObject<Item> SUMMONING_SCROLL_SPRING_PIXIE = ITEMS.register("summoning_scroll_spring_pixie", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SUMMONING_SCROLL_SUMMER_PIXIE = ITEMS.register("summoning_scroll_summer_pixie", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SUMMONING_SCROLL_AUTUMN_PIXIE = ITEMS.register("summoning_scroll_autumn_pixie", () -> new Item(new Item.Properties()));
@@ -43,7 +47,6 @@ public class ModItems {
                     .build())));
     //TODO Configurations
 
-    //TODO add recipes for giant seeds
     public static final RegistryObject<Item> GIANT_SUN_FLOWER_SEED = ITEMS.register("giant_sun_flower_seed", () -> new GiantFlowerSeedItem((GiantFlowerBlock) ModBlocks.GIANT_SUN_FLOWER.get()));
     public static final RegistryObject<Item> GIANT_CROCUS_FLOWER_SEED = ITEMS.register("giant_crocus_flower_seed", () -> new GiantFlowerSeedItem((GiantFlowerBlock) ModBlocks.GIANT_CROCUS_FLOWER.get()));
     public static final RegistryObject<Item> GIANT_DANDELION_FLOWER_SEED = ITEMS.register("giant_dandelion_flower_seed", () -> new GiantFlowerSeedItem((GiantFlowerBlock) ModBlocks.GIANT_DANDELION_FLOWER.get()));

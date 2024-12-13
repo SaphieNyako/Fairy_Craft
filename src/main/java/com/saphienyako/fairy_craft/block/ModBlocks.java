@@ -42,10 +42,6 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> FAIRY_ALTAR = registerBlockAndItem("fairy_altar",
             () -> new FairyAltarBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3f, 10f).requiresCorrectToolForDrops().sound(SoundType.STONE).noOcclusion()));
-    //TODO require correct Tool for Drops
-    //TODO are both textures for block required?
-    //TODO add recipe
-    //TODO add GUI
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);

@@ -6,13 +6,6 @@
       "conditions": [
         {
           "condition": "minecraft:survives_explosion"
-        },
-        {
-          "block": "fairy_craft:fairy_altar",
-          "condition": "minecraft:block_state_property",
-          "properties": {
-            "half": "lower"
-          }
         }
       ],
       "entries": [
