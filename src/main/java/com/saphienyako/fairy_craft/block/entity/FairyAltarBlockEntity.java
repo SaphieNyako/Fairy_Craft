@@ -1,6 +1,7 @@
 package com.saphienyako.fairy_craft.block.entity;
 
-import com.saphienyako.fairy_craft.item.ModItems;
+import com.saphienyako.fairy_craft.network.AltarParticleMessage;
+import com.saphienyako.fairy_craft.network.FairyCraftNetwork;
 import com.saphienyako.fairy_craft.recipe.FairyAltarRecipe;
 import com.saphienyako.fairy_craft.screen.FairyAltarMenu;
 import net.minecraft.core.BlockPos;
@@ -16,20 +17,21 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.Tags;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.data.ForgeItemTagsProvider;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class FairyAltarBlockEntity extends BlockEntity implements MenuProvider {
@@ -82,6 +84,14 @@ public class FairyAltarBlockEntity extends BlockEntity implements MenuProvider {
         return super.getCapability(cap, side);
     }
 
+    public ItemStackHandler getInventory() {
+        return itemHandler;
+    }
+
+    public int getProgress() {return progress;}
+
+    public int getMaxProgress() {return maxProgress;}
+
     public void drops() {
         //Drop Items
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
@@ -90,7 +100,6 @@ public class FairyAltarBlockEntity extends BlockEntity implements MenuProvider {
         }
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
-
 
     @Override
     protected void saveAdditional(@NotNull CompoundTag nbt) {
@@ -130,16 +139,70 @@ public class FairyAltarBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public void tick(Level level, BlockPos pos, BlockState state) {
-        if(hasRecipe()) {
-            increaseCraftingProgress();
-            setChanged(level, pos, state);
+        if (this.level == null) return;
+        if (!this.level.isClientSide) {
+            if (hasRecipe()) {
+                increaseCraftingProgress();
+                setChanged(level, pos, state);
 
-            if(hasProgressFinished()) {
-                craftItem();
+                if (hasProgressFinished()) {
+                    craftItem();
+                    resetProgress();
+                }
+            } else {
                 resetProgress();
             }
+            addParticles();
+            addItems();
+        }
+    }
+
+    private void addItems() {
+        //TODO add item, wanted to do this with implements BlockEntityRenderer<FairyAltarBlockEntity> but that doesnt seem to work.
+        /*
+        double progressScaled = this.getProgress() / (double) this.getMaxProgress();
+
+        List<ItemStack> stacks = new ArrayList<>();
+        for (int slot = 0; slot < this.getInventory().getSlots(); slot++) {
+            ItemStack stack = this.getInventory().getStackInSlot(slot);
+            if (!stack.isEmpty()) stacks.add(stack);
+        }
+        if (!stacks.isEmpty()) {
+            double anglePerStack = (2 * Math.PI) / stacks.size();
+            for (int idx = 0; idx < stacks.size(); idx++) {
+                //noinspection ConstantConditions
+                double shiftX = Math.cos((((double) this.getLevel().getGameTime()) / 8) + (idx * anglePerStack)) * (1 - progressScaled);
+                double shiftZ = Math.sin((((double) this.getLevel().getGameTime()) / 8) + (idx * anglePerStack)) * (1 - progressScaled);
+
+                poseStack.pushPose();
+                poseStack.translate(0.5 + shiftX, 1 + progressScaled, 0.5 + shiftZ);
+                poseStack.mulPose(Axis.YP.rotation((float) (ClientTickHandler.ticksInGame()) / 20));
+                poseStack.scale(0.85f, 0.85f, 0.85f);
+                Minecraft.getInstance().getItemRenderer().renderStatic(stacks.get(idx), ItemDisplayContext.GROUND, 10, OverlayTexture.NO_OVERLAY, poseStack,, this.getLevel(), 0);
+                poseStack.popPose();
+            }
+        } */
+    }
+
+    private void addParticles() {
+        if (this.progress > 0) {
+            if (this.progress >= (maxProgress - 1)) {
+                //Particles after item has been crafted
+                FairyCraftNetwork.sendParticles(level, AltarParticleMessage.Type.ALTAR_01,this.worldPosition, progress, maxProgress);
+            } else {
+                List<ItemStack> stacks = new ArrayList<>();
+                for (int slot = 0; slot < itemHandler.getSlots(); slot++) {
+                    ItemStack stack = itemHandler.getStackInSlot(slot);
+                    if (!stack.isEmpty()) stacks.add(stack);
+                }
+                if (!stacks.isEmpty()) {
+                    //Particles moving up while being crafted
+                    FairyCraftNetwork.sendParticles(level, AltarParticleMessage.Type.ALTAR_02,this.worldPosition, progress, maxProgress);
+                }
+            }
         } else {
-            resetProgress();
+            //Particles on Model
+            FairyCraftNetwork.sendParticles(level, AltarParticleMessage.Type.ALTAR_03,this.worldPosition, progress, maxProgress);
         }
     }
 
@@ -153,7 +216,7 @@ public class FairyAltarBlockEntity extends BlockEntity implements MenuProvider {
         if(recipe.isEmpty()) {
             return false;
         }
-        ItemStack result = recipe.get().getResultItem(getLevel().registryAccess());
+        ItemStack result = recipe.get().getResultItem(Objects.requireNonNull(getLevel()).registryAccess());
 
         return canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
     }
@@ -164,6 +227,7 @@ public class FairyAltarBlockEntity extends BlockEntity implements MenuProvider {
             inventory.setItem(i, this.itemHandler.getStackInSlot(i));
         }
 
+        assert this.level != null;
         return this.level.getRecipeManager().getRecipeFor(FairyAltarRecipe.Type.INSTANCE, inventory, level);
     }
 
@@ -194,5 +258,10 @@ public class FairyAltarBlockEntity extends BlockEntity implements MenuProvider {
 
     private boolean hasProgressFinished() {
         return progress >= maxProgress;
+    }
+
+    @Override
+    public AABB getRenderBoundingBox() {
+        return super.getRenderBoundingBox();
     }
 }

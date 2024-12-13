@@ -34,6 +34,12 @@ public class FairyCraftNetwork {
                 .consumerMainThread(ParticleMessage::handle)
                 .add();
 
+        net.messageBuilder(AltarParticleMessage.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(AltarParticleMessage::decode)
+                .encoder(AltarParticleMessage::encode)
+                .consumerMainThread(AltarParticleMessage::handle)
+                .add();
+
     }
 
     public static <MSG> void sendToServer(MSG message) {
@@ -47,6 +53,12 @@ public class FairyCraftNetwork {
     public static void sendParticles(Level level, ParticleMessage.Type type, BlockPos chunk) {
         if (level instanceof ServerLevel) {
            INSTANCE.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(chunk)), new ParticleMessage(type, chunk));
+        }
+    }
+
+    public static void sendParticles(Level level, AltarParticleMessage.Type type, BlockPos chunk, int progress, int maxProgress) {
+        if (level instanceof ServerLevel) {
+            INSTANCE.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(chunk)), new AltarParticleMessage(type, chunk, progress, maxProgress));
         }
     }
 }

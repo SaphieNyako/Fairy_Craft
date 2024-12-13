@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 public class SpringPixieRenderer extends MobRenderer<SpringPixieEntity, SpringPixieModel<SpringPixieEntity>> {
 
     public SpringPixieRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new SpringPixieModel<>(pContext.bakeLayer(ModModelLayers.SPRING_PIXIE_LAYER)),  0.50f); //TODO Shadow
+        super(pContext, new SpringPixieModel<>(pContext.bakeLayer(ModModelLayers.SPRING_PIXIE_LAYER)),  0.50f);
     }
 
     @Override
