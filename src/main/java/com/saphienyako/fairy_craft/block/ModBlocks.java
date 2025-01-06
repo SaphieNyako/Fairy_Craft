@@ -39,7 +39,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> MANDRAKE_CROP = BLOCKS.register("mandrake_crop",
             ()-> new MandrakeCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
 
-
+    //TODO add correct model
     public static final RegistryObject<Block> FAIRY_ALTAR = registerBlockAndItem("fairy_altar",
             () -> new FairyAltarBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3f, 10f).requiresCorrectToolForDrops().sound(SoundType.STONE).noOcclusion()));
 

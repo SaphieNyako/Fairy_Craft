@@ -1,9 +1,15 @@
 package com.saphienyako.fairy_craft.block.entity;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import com.saphienyako.fairy_craft.network.AltarParticleMessage;
 import com.saphienyako.fairy_craft.network.FairyCraftNetwork;
 import com.saphienyako.fairy_craft.recipe.FairyAltarRecipe;
 import com.saphienyako.fairy_craft.screen.FairyAltarMenu;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -16,6 +22,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -24,6 +31,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
@@ -34,7 +42,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-public class FairyAltarBlockEntity extends BlockEntity implements MenuProvider {
+public class FairyAltarBlockEntity extends BlockEntity implements MenuProvider, BlockEntityRenderer<FairyAltarBlockEntity> {
     private final ItemStackHandler itemHandler = new ItemStackHandler(6);
     private static final int INPUT_SLOT_00 = 0;
     private static final int INPUT_SLOT_01 = 1;
@@ -153,35 +161,7 @@ public class FairyAltarBlockEntity extends BlockEntity implements MenuProvider {
                 resetProgress();
             }
             addParticles();
-            addItems();
         }
-    }
-
-    private void addItems() {
-        //TODO add item, wanted to do this with implements BlockEntityRenderer<FairyAltarBlockEntity> but that doesnt seem to work.
-        /*
-        double progressScaled = this.getProgress() / (double) this.getMaxProgress();
-
-        List<ItemStack> stacks = new ArrayList<>();
-        for (int slot = 0; slot < this.getInventory().getSlots(); slot++) {
-            ItemStack stack = this.getInventory().getStackInSlot(slot);
-            if (!stack.isEmpty()) stacks.add(stack);
-        }
-        if (!stacks.isEmpty()) {
-            double anglePerStack = (2 * Math.PI) / stacks.size();
-            for (int idx = 0; idx < stacks.size(); idx++) {
-                //noinspection ConstantConditions
-                double shiftX = Math.cos((((double) this.getLevel().getGameTime()) / 8) + (idx * anglePerStack)) * (1 - progressScaled);
-                double shiftZ = Math.sin((((double) this.getLevel().getGameTime()) / 8) + (idx * anglePerStack)) * (1 - progressScaled);
-
-                poseStack.pushPose();
-                poseStack.translate(0.5 + shiftX, 1 + progressScaled, 0.5 + shiftZ);
-                poseStack.mulPose(Axis.YP.rotation((float) (ClientTickHandler.ticksInGame()) / 20));
-                poseStack.scale(0.85f, 0.85f, 0.85f);
-                Minecraft.getInstance().getItemRenderer().renderStatic(stacks.get(idx), ItemDisplayContext.GROUND, 10, OverlayTexture.NO_OVERLAY, poseStack,, this.getLevel(), 0);
-                poseStack.popPose();
-            }
-        } */
     }
 
     private void addParticles() {
@@ -263,5 +243,33 @@ public class FairyAltarBlockEntity extends BlockEntity implements MenuProvider {
     @Override
     public AABB getRenderBoundingBox() {
         return super.getRenderBoundingBox();
+    }
+
+
+    @Override
+    public void render(FairyAltarBlockEntity altar, float partialTick, @NotNull PoseStack poseStack, @NotNull MultiBufferSource buffer, int light, int overlay) {
+
+        double progressScaled = altar.getProgress() / (double) altar.getMaxProgress();
+
+        List<ItemStack> stacks = new ArrayList<>();
+        for (int slot = 0; slot < altar.getInventory().getSlots(); slot++) {
+            ItemStack stack = altar.getInventory().getStackInSlot(slot);
+            if (!stack.isEmpty()) stacks.add(stack);
+        }
+
+        if (!stacks.isEmpty()) {
+            double anglePerStack = (2 * Math.PI) / stacks.size();
+            for (int idx = 0; idx < stacks.size(); idx++) {
+                //noinspection ConstantConditions
+                double shiftX = Math.cos((((double) altar.getLevel().getGameTime() + partialTick) / 8) + (idx * anglePerStack)) * (1 - progressScaled);
+                double shiftZ = Math.sin((((double) altar.getLevel().getGameTime() + partialTick) / 8) + (idx * anglePerStack)) * (1 - progressScaled);
+                poseStack.pushPose();
+                poseStack.translate(0.5 + shiftX, 1 + progressScaled, 0.5 + shiftZ);
+                poseStack.mulPose(Axis.YP.rotation((ClientTickHandler.ticksInGame() + partialTick) / 20));
+                poseStack.scale(0.85f, 0.85f, 0.85f);
+                Minecraft.getInstance().getItemRenderer().renderStatic(stacks.get(idx), ItemDisplayContext.GROUND, light, OverlayTexture.NO_OVERLAY, poseStack, buffer, altar.getLevel(), 0);
+                poseStack.popPose();
+            }
+        }
     }
 }
