@@ -4,9 +4,11 @@ import com.saphienyako.fairy_craft.entity.base.PixieBase;
 import com.saphienyako.fairy_craft.sound.ModSounds;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
@@ -83,16 +85,13 @@ public class BreedAbilityGoal extends Goal {
 
     @Override
     public boolean canUse() {
-        /*
+
         Player owning = this.entity.getOwningPlayer();
         if (owning instanceof ServerPlayer) {
             return this.level.random.nextFloat() < 0.05f;
         } else {
             return false;
-        } */
-        return this.level.random.nextFloat() < 0.5f;
-        //TODO attune random chance, add Owner checker
-
+        }
     }
 
     @Nullable

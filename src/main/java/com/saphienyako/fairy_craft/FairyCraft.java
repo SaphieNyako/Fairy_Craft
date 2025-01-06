@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.saphienyako.fairy_craft.block.ModBlocks;
 import com.saphienyako.fairy_craft.block.entity.FairyAltarBlockEntity;
 import com.saphienyako.fairy_craft.block.entity.ModBlockEntities;
+import com.saphienyako.fairy_craft.block.renderer.FairyAltarBlockRenderer;
 import com.saphienyako.fairy_craft.effect.ModEffects;
 import com.saphienyako.fairy_craft.entity.*;
 import com.saphienyako.fairy_craft.entity.model.*;
@@ -23,6 +24,7 @@ import com.saphienyako.fairy_craft.screen.ModMenuTypes;
 import com.saphienyako.fairy_craft.sound.ModSounds;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -109,8 +111,7 @@ public class FairyCraft
             EntityRenderers.register(ModEntities.AUTUMN_PIXIE.get(), AutumnPixieRenderer::new);
             EntityRenderers.register(ModEntities.SUMMER_PIXIE.get(), SummerPixieRenderer::new);
             EntityRenderers.register(ModEntities.WINTER_PIXIE.get(), WinterPixieRenderer::new);
-
-
+            BlockEntityRenderers.register(ModBlockEntities.FAIRY_ALTAR_BLOCK_ENTITY.get(), FairyAltarBlockRenderer::new);
             MenuScreens.register(ModMenuTypes.FAIRY_ALTAR_MENU.get(), FairyAltarScreen::new);
         }
     }

@@ -17,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;
+import java.util.Random;
 
 import static com.saphienyako.fairy_craft.item.ModItems.*;
 
@@ -37,7 +38,7 @@ public class SummoningScrollItem<T extends LivingEntity> extends Item {
         }
     }
 
-    protected @NotNull EntityType<? extends PixieBase> returnLivingEntity(){
+    protected EntityType<? extends PixieBase> returnLivingEntity(){
         if(this.equals(SUMMONING_SCROLL_SPRING_PIXIE.get())){
             return ModEntities.SPRING_PIXIE.get();
         } else if (this.equals(SUMMONING_SCROLL_SUMMER_PIXIE.get())) {
@@ -46,9 +47,7 @@ public class SummoningScrollItem<T extends LivingEntity> extends Item {
             return ModEntities.AUTUMN_PIXIE.get();
         } else if (this.equals(SUMMONING_SCROLL_WINTER_PIXIE.get())){
             return ModEntities.WINTER_PIXIE.get();
-        }
-
-        return null;
+        } else return null;
 
     }
 
@@ -57,7 +56,6 @@ public class SummoningScrollItem<T extends LivingEntity> extends Item {
     public InteractionResult useOn(@Nonnull UseOnContext context) {
         if (context.getPlayer() != null) {
             if (!context.getLevel().isClientSide) {
-
 
                 LivingEntity entity = returnLivingEntity().create(context.getLevel());
 
@@ -69,11 +67,9 @@ public class SummoningScrollItem<T extends LivingEntity> extends Item {
                     this.prepareEntity(entity, context);
 
                     context.getLevel().addFreshEntity(entity);
-
                     FairyCraftNetwork.sendParticles(context.getLevel(), ParticleMessage.Type.DANDELION_FLUFF, context.getClickedPos());
 
                     //TODO add sound?
-
                     if (!context.getPlayer().isCreative()) {
                         context.getItemInHand().shrink(1);
                     }
