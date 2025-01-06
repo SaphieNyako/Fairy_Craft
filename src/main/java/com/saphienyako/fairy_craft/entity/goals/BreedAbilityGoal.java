@@ -92,6 +92,7 @@ public class BreedAbilityGoal extends Goal {
         } */
         return this.level.random.nextFloat() < 0.5f;
         //TODO attune random chance, add Owner checker
+
     }
 
     @Nullable

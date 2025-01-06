@@ -40,7 +40,7 @@ public class PanicGoal extends Goal {
     @Override
     public boolean canUse() {
         return (this.entity.getLastDamageSource() != null || this.entity.getLastDamageSource() == this.entity.damageSources().inWall());
-        //TODO WHY WAS TAMABLE ADDED HERE BEFORE? CAUSE THE PLAYER SHOULDNT CAUSE THE FAIRY TO FLEE
+        //TODO WHY WAS TAMABLE ADDED HERE BEFORE? CAUSE THE PLAYER SHOULDNT CAUSE THE FAIRY TO FLEE WHEN HIT
         //&& (!(entity instanceof ITameable tameable) || !tameable.isTamed())
     }
 }

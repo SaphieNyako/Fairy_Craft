@@ -4,6 +4,7 @@ import com.saphienyako.fairy_craft.effect.ModEffects;
 import com.saphienyako.fairy_craft.entity.base.PixieBase;
 import com.saphienyako.fairy_craft.sound.ModSounds;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -87,16 +88,12 @@ public class BlessingEffectGoal extends Goal {
 
     @Override
     public boolean canUse() {
-        /*
         Player owning = this.entity.getOwningPlayer();
-        if (owning instanceof ServerPlayer serverPlayer) {
+        if (owning instanceof ServerPlayer) {
             return this.level.random.nextFloat() < 0.01f;
         } else {
             return false;
-        } */
-        //TODO attune random chance, add Owner checker
-        return this.level.random.nextFloat() < 0.01f;
+        }
     }
-
 
 }

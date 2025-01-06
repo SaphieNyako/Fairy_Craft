@@ -29,6 +29,7 @@ import net.minecraft.world.phys.Vec3;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.OverridingMethodsMustInvokeSuper;
+import java.util.Random;
 import java.util.UUID;
 
 public abstract class FairyBase extends PathfinderMob implements IOwnable, ISummonable {
@@ -41,7 +42,7 @@ public abstract class FairyBase extends PathfinderMob implements IOwnable, ISumm
 
     protected FairyBase(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
-        this.noCulling = true; //TODO what is this?
+        this.noCulling = true;
     }
 
     public static AttributeSupplier.Builder getDefaultAttributes() {
@@ -237,7 +238,11 @@ public abstract class FairyBase extends PathfinderMob implements IOwnable, ISumm
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.random.nextBoolean() ?  ModSounds.PIXIE_AMBIENT.get() : null;
+        Random random = new Random();
+        if(random.nextFloat() < 0.1f){
+            return ModSounds.PIXIE_AMBIENT.get();
+        } else return null;
+
     }
 
     @Override

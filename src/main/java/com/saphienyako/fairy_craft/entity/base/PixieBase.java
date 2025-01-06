@@ -51,8 +51,8 @@ public abstract class PixieBase extends FlyingFairyBase{
     protected void registerGoals() {
         super.registerGoals();
         this.goalSelector.addGoal(50, new PanicGoal(this, 0.003, 13));
-        this.goalSelector.addGoal(20, new BlessingEffectGoal(this, getMobEffect(), this.level()));
-        this.goalSelector.addGoal(10, new TemptGoal(this, 1.25, Ingredient.of(Items.COOKIE), false)); //TODO Tamed?
+        this.goalSelector.addGoal(20, new BlessingEffectGoal(this, getMobEffect(), this.level())); //TODO OWNABLE
+        this.goalSelector.addGoal(10, new TemptGoal(this, 1.25, Ingredient.of(Items.COOKIE), false));
     }
 
     @Override

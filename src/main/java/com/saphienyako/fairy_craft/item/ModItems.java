@@ -4,6 +4,7 @@ import com.saphienyako.fairy_craft.FairyCraft;
 import com.saphienyako.fairy_craft.block.GiantFlowerBlock;
 import com.saphienyako.fairy_craft.block.ModBlocks;
 import com.saphienyako.fairy_craft.entity.ModEntities;
+import com.saphienyako.fairy_craft.entity.SpringPixieEntity;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -31,11 +32,16 @@ public class ModItems {
     public static final RegistryObject<Item> EMPTY_SUMMONING_SCROLL = ITEMS.register("empty_summoning_scroll", () -> new Item(new Item.Properties()));
 
     //TODO summon pixies
+
+    /* New System for Pixie summoning: Scroll summons pixie, registers ownership,
+    pixie are not put back in empty scrolls, this was too confusing for people.
+    Scroll disappears only owner can interact with fae and make fae dismiss leaving scroll in their inventory.*/
+
     //TODO quest giver
-    public static final RegistryObject<Item> SUMMONING_SCROLL_SPRING_PIXIE = ITEMS.register("summoning_scroll_spring_pixie", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> SUMMONING_SCROLL_SUMMER_PIXIE = ITEMS.register("summoning_scroll_summer_pixie", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> SUMMONING_SCROLL_AUTUMN_PIXIE = ITEMS.register("summoning_scroll_autumn_pixie", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> SUMMONING_SCROLL_WINTER_PIXIE = ITEMS.register("summoning_scroll_winter_pixie", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SUMMONING_SCROLL_SPRING_PIXIE = ITEMS.register("summoning_scroll_spring_pixie", () -> new SummoningScrollItem<>(new Item.Properties()));
+    public static final RegistryObject<Item> SUMMONING_SCROLL_SUMMER_PIXIE = ITEMS.register("summoning_scroll_summer_pixie", () -> new SummoningScrollItem<>(new Item.Properties()));
+    public static final RegistryObject<Item> SUMMONING_SCROLL_AUTUMN_PIXIE = ITEMS.register("summoning_scroll_autumn_pixie", () -> new SummoningScrollItem<>(new Item.Properties()));
+    public static final RegistryObject<Item> SUMMONING_SCROLL_WINTER_PIXIE = ITEMS.register("summoning_scroll_winter_pixie", () -> new SummoningScrollItem<>(new Item.Properties()));
     public static final RegistryObject<Item> PIXIE_DUST = ITEMS.register("pixie_dust", () -> new PixieDustItem(new Item.Properties().food(
             new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.LEVITATION, 30, 1), 1).build())));
     //TODO Configurations
