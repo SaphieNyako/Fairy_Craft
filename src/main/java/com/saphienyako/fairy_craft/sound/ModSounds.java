@@ -17,6 +17,13 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> FAIRY_CRAFT_MUSIC_DISC = registerSoundEvents("fairy_craft_music_disc");
     public static final RegistryObject<SoundEvent> PIXIE_SPELL_CASTING = registerSoundEvents("pixie_spell_casting");
 
+    public static final RegistryObject<SoundEvent> PIXIE_AMBIENT = registerSoundEvents("pixie_ambient");
+
+    public static final RegistryObject<SoundEvent> PIXIE_HURT = registerSoundEvents("pixie_hurt");
+
+    public static final RegistryObject<SoundEvent> PIXIE_DEATH = registerSoundEvents("pixie_death");
+
+
 
     private static RegistryObject<SoundEvent> registerSoundEvents(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(FairyCraft.MOD_ID, name)));

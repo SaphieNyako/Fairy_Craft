@@ -15,7 +15,7 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<SpringPixieEntity>> SPRING_PIXIE =
             ENTITY_TYPES.register("spring_pixie", () -> EntityType.Builder.of(SpringPixieEntity::new, MobCategory.CREATURE)
-                    .sized(0.7f, 1.7f).build("spring_pixie")); //TODO check size problems with hit box in old version
+                    .sized(0.7f, 1.7f).build("spring_pixie"));
 
     public static final RegistryObject<EntityType<SummerPixieEntity>> SUMMER_PIXIE =
             ENTITY_TYPES.register("summer_pixie", () -> EntityType.Builder.of(SummerPixieEntity::new, MobCategory.CREATURE)

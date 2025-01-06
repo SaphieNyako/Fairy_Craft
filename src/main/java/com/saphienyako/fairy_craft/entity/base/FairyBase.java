@@ -3,6 +3,7 @@ package com.saphienyako.fairy_craft.entity.base;
 import com.saphienyako.fairy_craft.entity.base.intereface.IOwnable;
 import com.saphienyako.fairy_craft.entity.base.intereface.ISummonable;
 import com.saphienyako.fairy_craft.entity.goals.GoToTargetPositionGoal;
+import com.saphienyako.fairy_craft.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
@@ -221,33 +222,26 @@ public abstract class FairyBase extends PathfinderMob implements IOwnable, ISumm
         return false;
     }
 
-
-    //TODO make abstract??
     @javax.annotation.Nullable
     @Override
     protected SoundEvent getHurtSound(@Nonnull DamageSource damageSource) {
-       return null;
-       //ModSoundEvents.pixieHurt.getSoundEvent(); TODO add sound
+       return ModSounds.PIXIE_HURT.get();
     }
 
     @javax.annotation.Nullable
     @Override
     protected SoundEvent getDeathSound() {
-        return null;
-        //ModSoundEvents.pixieDeath.getSoundEvent(); TODO add sound
+        return ModSounds.PIXIE_DEATH.get();
     }
 
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return null;
-        //this.random.nextBoolean() ?  ModSoundEvents.pixieAmbient.getSoundEvent() : null; TODO add sound
+        return this.random.nextBoolean() ?  ModSounds.PIXIE_AMBIENT.get() : null;
     }
 
     @Override
     protected float getSoundVolume() {
         return 0.6f;
     }
-
-    //GECKOLIB NOT REQUIRED(?)
 }

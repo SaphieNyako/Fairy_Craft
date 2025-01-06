@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 public class WinterPixieRenderer extends MobRenderer<WinterPixieEntity, WinterPixieModel<WinterPixieEntity>> {
 
     public WinterPixieRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new WinterPixieModel<>(pContext.bakeLayer(ModModelLayers.WINTER_PIXIE_LAYER)),  0.50f); //TODO Shadow
+        super(pContext, new WinterPixieModel<>(pContext.bakeLayer(ModModelLayers.WINTER_PIXIE_LAYER)),  0.50f);
     }
 
     @Override

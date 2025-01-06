@@ -18,5 +18,23 @@
     "sounds": [
       "fairy_craft:pixie_spell_casting"
     ]
+  },
+  "pixie_ambient": {
+    "subtitles": "sounds.fairy_craft.pixie_ambient",
+    "sounds": [
+      "fairy_craft:pixie_ambient"
+    ]
+  },
+  "pixie_hurt": {
+    "subtitles": "sounds.fairy_craft.pixie_hurt",
+    "sounds": [
+      "fairy_craft:pixie_hurt"
+    ]
+  },
+  "pixie_death": {
+    "subtitles": "sounds.fairy_craft.pixie_death",
+    "sounds": [
+      "fairy_craft:pixie_death"
+    ]
   }
 }

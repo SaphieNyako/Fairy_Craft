@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 public class AutumnPixieRenderer extends MobRenderer<AutumnPixieEntity, AutumnPixieModel<AutumnPixieEntity>> {
 
     public AutumnPixieRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new AutumnPixieModel<>(pContext.bakeLayer(ModModelLayers.AUTUMN_PIXIE_LAYER)),  0.50f); //TODO Shadow
+        super(pContext, new AutumnPixieModel<>(pContext.bakeLayer(ModModelLayers.AUTUMN_PIXIE_LAYER)),  0.50f);
     }
 
     @Override

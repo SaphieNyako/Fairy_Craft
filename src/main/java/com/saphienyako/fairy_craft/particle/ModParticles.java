@@ -24,6 +24,4 @@ public class ModParticles {
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
     }
-
-
 }

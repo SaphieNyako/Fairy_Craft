@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class SummerPixieRenderer extends MobRenderer<SummerPixieEntity, SummerPixieModel<SummerPixieEntity>> {
     public SummerPixieRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new SummerPixieModel<>(pContext.bakeLayer(ModModelLayers.SUMMER_PIXIE_LAYER)),  0.50f); //TODO Shadow
+        super(pContext, new SummerPixieModel<>(pContext.bakeLayer(ModModelLayers.SUMMER_PIXIE_LAYER)),  0.50f);
     }
 
     @Override
